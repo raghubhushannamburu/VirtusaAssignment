@@ -32,7 +32,7 @@ public class StepDef{
 	}
 
 	@And("^I asserted text$")
-	public void assertedtext() throws InterruptedException {
+	public void assertedtext()  {
 			impl.assertedtext();
 
 			}

@@ -69,7 +69,8 @@ public class Base {
 					DesiredCapabilities capabilities = new DesiredCapabilities();
 					capabilities.setCapability("marionette", false);
 					capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-					driver = new FirefoxDriver(capabilities);
+
+
 					break;
 
 			}

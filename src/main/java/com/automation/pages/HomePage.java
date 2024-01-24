@@ -14,6 +14,7 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//a[@href='/products']")
 	public  WebElement productLink;
 
+
 	@FindBy(xpath = "//a[@title='Request a Demo']")
 	public  WebElement text;
 

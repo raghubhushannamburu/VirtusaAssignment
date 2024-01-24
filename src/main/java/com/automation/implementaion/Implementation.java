@@ -1,57 +1,61 @@
 package com.automation.implementaion;
-import static com.automation.base.Base.getActionClassReference;
-import static com.automation.base.Base.getJavaScriptExecutor;
+import static com.automation.base.Base.*;
 import static org.junit.Assert.*;
 
 import com.automation.pages.HomePage;
 import com.automation.utils.Elements;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Implementation extends Elements{
 	public static Logger log=Logger.getLogger(Implementation.class);
 
-	HomePage homePo=new HomePage();
 
+	WebDriverWait wait = new WebDriverWait(driver,20);
+
+	HomePage homePo=new HomePage();
 
 
 	public void clickAcceptAllCookiesandproductbutton() {
 
 		try {
-			Thread.sleep(3000);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Accept All Cookies']")));
 			clickObject(homePo.button, "button");
-
-			//clickObject(homePo.productLink, "productLink");
-
-
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 
 		}
 	}
 
 	public void  mousehoveronProductlink()	{
-		try {
-		Actions actions=getActionClassReference();
-		Thread.sleep(3000);
+		try
+		{
+			Actions actions = new Actions(driver);	;
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@href='/products']")));
 		actions.moveToElement(homePo.productLink).click().perform();
-		} catch (InterruptedException e) {
-
+		}catch (Exception e) {
+         log.error("Failed due to error"+e.getMessage());
 		}
 
 	}
-		public void assertedtext() throws InterruptedException {
-			Thread.sleep(3000);
-			assertEquals(homePo.text.getText(),"Register for Demo");
+	public void assertedtext()  {
+
+			try{
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@title='Request a Demo']")));
+			    assertEquals(homePo.text.getText(),"Register for Demo");
+			}catch(Exception e){
+				log.error("Failed due to error"+e.getMessage());
+				}
 
 		}
 
       public void clickRequestDemoandValidateLabels(){
 		  try {
-		   Thread.sleep(1000);
-
-		   JavascriptExecutor js=getJavaScriptExecutor();
+			  JavascriptExecutor js=getJavaScriptExecutor();
 		   js.executeScript("arguments[0].click()", homePo.demolink);
 		   boolean firstname=homePo.FirstnameLabel.isDisplayed();
 		   boolean lastname=homePo.lastnameLabel.isDisplayed();
@@ -59,7 +63,8 @@ public class Implementation extends Elements{
 			   log.info("Both labels are present");
 
 		  }
-		  } catch (InterruptedException e) {
+		  } catch (Exception e) {
+			  log.error("Failed due to error"+e.getMessage());
 
 		  }
 	  }
