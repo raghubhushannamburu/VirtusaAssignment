@@ -27,5 +27,12 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//label[@for='FirstName']")
 	public WebElement FirstnameLabel;
 
+	@FindBy(xpath = "//a[@href='/solutions']")
+	public WebElement  solutions;
+
+	@FindBy(xpath ="//div/a[@href='/solutions/financial-services']")
+	public WebElement financialaccounting;
+
+
 
 }

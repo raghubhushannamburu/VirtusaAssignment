@@ -36,6 +36,10 @@ public class StepDef{
 			impl.assertedtext();
 
 			}
+	@Then("^I mouse hovered on solutions and validated finance accounting URL$")
+	public void i_mouse_hovered_on_solutions_and_validated_finance_accounting_URL()  {
+         impl.i_mouse_hovered_on_solutions_and_validated_finance_accounting_URL();
+	}
 
 
 

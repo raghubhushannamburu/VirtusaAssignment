@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import com.automation.pages.HomePage;
 import com.automation.utils.Elements;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
@@ -68,7 +69,20 @@ public class Implementation extends Elements{
 
 		  }
 	  }
+	public void i_mouse_hovered_on_solutions_and_validated_finance_accounting_URL() {
+		try {
+			JavascriptExecutor js=getJavaScriptExecutor();
+			homePo.solutions.click();
+			js.executeScript("arguments[0].scrollIntoView", homePo.financialaccounting);
+			js.executeScript("arguments[0].click()", homePo.financialaccounting);
+			String url=driver.getCurrentUrl();
+			Assert.assertEquals(url,"https://www.automationanywhere.com/solutions/financial-services");
 
+		} catch (Exception e) {
+			log.error("Failed due to error"+e.getMessage());
+
+		}
+	}
 
 
 	

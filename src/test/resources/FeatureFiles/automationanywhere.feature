@@ -12,6 +12,13 @@ Then I click AcceptAllCookies button
 Then I mouse hovered on product
 And I asserted text
 
+  Scenario: Mouse hover on automationanywhere
+    Given I navigate and login to automationanywhere website
+    Then I click AcceptAllCookies button
+    Then I mouse hovered on solutions and validated finance accounting URL
+
+
+
 
 
 
